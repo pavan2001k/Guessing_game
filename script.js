@@ -1,58 +1,45 @@
-let menu = document.querySelector('#menu-bar');
-let navbar = document.querySelector('.navbar');
-
-
-menu.onclick = () => {
-
-menu.classList.toggle('fa-times');
-navbar.classList.toggle('active');
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
 }
 
-window.onscroll = () => {
-    menu.classList.remove('fa-times');
-    navbar.classList.remove('active');
-
-
-if(window.scrollY > 60){
-    document.querySelector('#scroll-top').classList.add('active');
-  }else{
-    document.querySelector('#scroll-top').classList.remove('active');
-  }
-
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
 }
 
-function loader(){
-  document.querySelector('.loader-container').classList.add('fade-out');
+h1 {
+    color: #333;
 }
 
-function fadeOut(){
-  setInterval(loader, 2000);
+input {
+    padding: 10px;
+    width: 80%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-window.onload = fadeOut();
-
-var header=document.querySelector("b")
-
-header
-header.style.color='blue'
-
-
-function getRandomColor()
-{
-    var letters="0123456789ABCDEF";
-    var color='#';
-    for(var i=0;i<6;i++)
-    {
-        color+= letters[Math.floor(Math.random()*16)];
-    }
-    return color;
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #28a745;
+    color: white;
+    cursor: pointer;
 }
 
-function changeHeaderColor()
-{
-    colorInput=getRandomColor()
-    header.style.color=colorInput;
+button:hover {
+    background: #218838;
 }
 
-setInterval("changeHeaderColor()",100);
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
