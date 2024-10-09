@@ -1,45 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-}
+let randomNumber = Math.floor(Math.random() * 10) + 1;
+let attempts = 0;
 
-.container {
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-}
+document.getElementById("submit").addEventListener("click", function () {
+    const guess = parseInt(document.getElementById("guess").value);
+    attempts++;
+    const result = document.getElementById("result");
 
-h1 {
-    color: #333;
-}
+    if (guess < 1 || guess > 10 || isNaN(guess)) {
+        result.innerHTML = "Please enter a number between 1 and 100.";
+    } else if (guess < randomNumber) {
+        result.innerHTML = "Too low! Try again.";
+    } else if (guess > randomNumber) {
+        result.innerHTML = "Too high! Try again.";
+    } else {
+        result.innerHTML = `Congratulations! You've guessed the number ${randomNumber} in ${attempts} attempts.`;
+        document.getElementById("restart").style.display = "block";
+    }
+});
 
-input {
-    padding: 10px;
-    width: 80%;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    background: #28a745;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #218838;
-}
-
-#result {
-    margin-top: 20px;
-    font-weight: bold;
-}
+document.getElementById("restart").addEventListener("click", function () {
+    randomNumber = Math.floor(Math.random() * 10) + 1;
+    attempts = 0;
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("guess").value = "";
+    document.getElementById("restart").style.display = "none";
+});
